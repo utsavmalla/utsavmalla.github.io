@@ -1,0 +1,23 @@
+/**
+*
+Utsav Malla v1 Base stylesheet
+TOC:
+01.reset
+*/
+
+/**
+----
+0.1 reset -normalize.css
+--------
+*/
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100;
+
+}
+
+body{
+    margin:0;
+}
+
