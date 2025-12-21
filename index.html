@@ -1,91 +1,166 @@
-<!DOCTYPE html>
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    
-    <!-- basic page needs-->
     <meta charset="utf-8">
-    <title>Utsav Malla</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Utsav Malla — Front-end Developer</title>
+    <meta name="description" content="Utsav Malla — Front-end developer & UI/UX designer">
+    <meta name="author" content="Utsav Malla">
+    <meta name="google-site-verification" content="b41SegIa-5ajknrh8CdOQpP9-2HBT7bXuL18XyTJNtM">
 
-    <!-- mobile specific metas-->
-    <meata name="viewport" content="width=device-width, initial-scale=1, maxium-scale=1">
-        
-    <meta name="google-site-verification" content="b41SegIa-5ajknrh8CdOQpP9-2HBT7bXuL18XyTJNtM" />    
-    
-    <!-- CSS-->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Local icon font (kept for compatibility) -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+    <!-- Base + main styles -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/main.css">
-    
 
-    <!--script-->
-
-
-    
+    <!-- Minimal JS for theme+animations -->
+    <script defer src="js/main.js"></script>
 </head>
-
 <body id="top">
 
-    <!-- header-->
-    <header>
-        <div class="row">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-            <div class="top-bar">
-                <a class="menu-toggle" href="#"><span>Menu</span></a>
-                
-                <div class="logo">
-                    <a href="index.html"> Utsav Malla</a>
-                </div>
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="logo" href="/">Utsav Malla</a>
+            <nav class="site-nav" role="navigation" aria-label="Primary">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
 
-                <nav id="main-van-wrap">
-                    <ul class="main-navigation">
-                        <li class="current"><a class="smoothscrool" href="#intro" title="">Home</a></li> <!--add href link-->
-                        <li><a class="smoothscroll" href="#about" title="">About</a></li> <!--add href link to about page-->
-                    </ul>
-                </nav>
-            </div> <!-- /top bar-->
-
-        </div> <!-- /row-->
-    </header>
-    <!--header-->
-
-    <!-- intor section-->
-    <section id="intro">
-
-        <div class="intro-overlay"></div>
-
-        <div class="intro-content">
-            <div class="row">
-
-                <div class="col-twelve">
-
-                    <h5>Hello, World</h5>
-                    <h1>I'm Utsav Malla</h1>
-
-                    <p class="intro-position">
-                        <span>Front-end Developer</span>
-                        <span>UI/UX Designer</span>
-                    </p>
-
-                    <a class="button stroke smoothscrool" href="#about" title="">More About ME</a>
-                
-                </div>
-
+            <div class="header-actions">
+                <button id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
             </div>
+        </div>
+    </header>
 
-        </div> <!--into content-->
+    <main id="main">
 
-        <ul class="intro-social">
-            <li><a href="https://www.facebook.com/profile.php?id=100001453885960"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/utsav-m-aa244b130/"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://github.com/utsavmalla"><i class="fa fa-github"></i></a></li>
-        </ul> <!--introsocial-->
-    </section> 
-    <!-- introsection-->
+        <section id="hero" class="hero" aria-labelledby="hero-heading">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <p class="eyebrow">Hello, I'm</p>
+                    <h1 id="hero-heading">Utsav Malla</h1>
+                    <p class="lead">Front-end Developer • UI/UX Designer — building accessible, performant web experiences.</p>
 
+                    <div class="hero-ctas">
+                        <a class="btn primary" href="#projects">View Projects</a>
+                        <a class="btn ghost" href="#contact">Contact Me</a>
+                    </div>
+                </div>
 
+                <aside class="hero-social" aria-label="Social links">
+                    <a href="https://github.com/utsavmalla" aria-label="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/utsav-m-aa244b130/" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                </aside>
+            </div>
+        </section>
+
+        <section id="about" class="about" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading">About Me</h2>
+                <p>I design and build fast, accessible front-end experiences. I enjoy clean UI, robust CSS architecture, and simple JavaScript that enhances usability.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="skills" aria-labelledby="skills-heading">
+            <div class="container">
+                <h2 id="skills-heading">Skills</h2>
+                <div class="skills-grid">
+                    <article class="skill" tabindex="0">
+                        <h3>HTML &amp; Accessibility</h3>
+                        <progress value="90" max="100">90%</progress>
+                    </article>
+                    <article class="skill" tabindex="0">
+                        <h3>CSS (Flexbox & Grid)</h3>
+                        <progress value="88" max="100">88%</progress>
+                    </article>
+                    <article class="skill" tabindex="0">
+                        <h3>JavaScript</h3>
+                        <progress value="75" max="100">75%</progress>
+                    </article>
+                    <article class="skill" tabindex="0">
+                        <h3>UI/UX</h3>
+                        <progress value="80" max="100">80%</progress>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects" aria-labelledby="projects-heading">
+            <div class="container">
+                <h2 id="projects-heading">Projects</h2>
+                <div class="projects-grid">
+                    <article class="project-card" tabindex="0">
+                        <img src="images/project-1.jpg" alt="Screenshot of Project 1" loading="lazy" width="800" height="450">
+                        <div class="project-body">
+                            <h3>Project One</h3>
+                            <p>Short description of the project highlighting tech used and user impact.</p>
+                            <a class="card-link" href="#">View Case</a>
+                        </div>
+                    </article>
+                    <article class="project-card" tabindex="0">
+                        <img src="images/project-2.jpg" alt="Screenshot of Project 2" loading="lazy" width="800" height="450">
+                        <div class="project-body">
+                            <h3>Project Two</h3>
+                            <p>Short description of the project highlighting tech used and user impact.</p>
+                            <a class="card-link" href="#">View Case</a>
+                        </div>
+                    </article>
+                    <article class="project-card" tabindex="0">
+                        <img src="images/project-3.jpg" alt="Screenshot of Project 3" loading="lazy" width="800" height="450">
+                        <div class="project-body">
+                            <h3>Project Three</h3>
+                            <p>Short description of the project highlighting tech used and user impact.</p>
+                            <a class="card-link" href="#">View Case</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading">Contact</h2>
+                <p>If you'd like to work together or say hello, send a message below.</p>
+
+                <form class="contact-form" action="#" method="post" novalidate>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" required>
+
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+
+                    <button class="btn primary" type="submit">Send Message</button>
+                </form>
+
+                <div class="social-links">
+                    <a href="https://github.com/utsavmalla">GitHub</a>
+                    <a href="https://www.linkedin.com/in/utsav-m-aa244b130/">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <small>&copy; <span id="year"></span> Utsav Malla — Built with semantic HTML, modern CSS and minimal JS.</small>
+        </div>
+    </footer>
 
 </body>
 </html>
