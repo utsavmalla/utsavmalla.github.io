@@ -1,166 +1,251 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Utsav Malla — Front-end Developer</title>
-    <meta name="description" content="Utsav Malla — Front-end developer & UI/UX designer">
-    <meta name="author" content="Utsav Malla">
-    <meta name="google-site-verification" content="b41SegIa-5ajknrh8CdOQpP9-2HBT7bXuL18XyTJNtM">
+    <meta
+      name="description"
+      content="Utsav Malla — Front-end developer & UI/UX designer"
+    />
+    <meta name="author" content="Utsav Malla" />
+    <meta
+      name="google-site-verification"
+      content="b41SegIa-5ajknrh8CdOQpP9-2HBT7bXuL18XyTJNtM"
+    />
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Local icon font (kept for compatibility) -->
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
 
     <!-- Base + main styles -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/main.css" />
 
     <!-- Minimal JS for theme+animations -->
     <script defer src="js/main.js"></script>
-</head>
-<body id="top">
-
+  </head>
+  <body id="top">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" role="banner">
-        <div class="container header-inner">
-            <a class="logo" href="/">Utsav Malla</a>
-            <nav class="site-nav" role="navigation" aria-label="Primary">
-                <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+      <div class="container header-inner">
+        <a class="logo" href="/">Utsav Malla</a>
+        <nav class="site-nav" role="navigation" aria-label="Primary">
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
 
-            <div class="header-actions">
-                <button id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
-            </div>
+        <div class="header-actions">
+          <button
+            id="theme-toggle"
+            aria-pressed="false"
+            aria-label="Toggle dark mode"
+          >
+            🌙
+          </button>
         </div>
+      </div>
     </header>
 
     <main id="main">
+      <section id="hero" class="hero" aria-labelledby="hero-heading">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <p class="eyebrow">Hello, I'm</p>
+            <h1 id="hero-heading">Utsav Malla</h1>
+            <p class="lead">
+              JavaScript Developer | AngularJS, .NET MVC, SQL Server | React & Node.js (Learning) | Web Applications 
+              | Front-end Developer • UI/UX Designer — building accessible, performant web experiences.
+            </p>
 
-        <section id="hero" class="hero" aria-labelledby="hero-heading">
-            <div class="container hero-inner">
-                <div class="hero-content">
-                    <p class="eyebrow">Hello, I'm</p>
-                    <h1 id="hero-heading">Utsav Malla</h1>
-                    <p class="lead">Front-end Developer • UI/UX Designer — building accessible, performant web experiences.</p>
-
-                    <div class="hero-ctas">
-                        <a class="btn primary" href="#projects">View Projects</a>
-                        <a class="btn ghost" href="#contact">Contact Me</a>
-                    </div>
-                </div>
-
-                <aside class="hero-social" aria-label="Social links">
-                    <a href="https://github.com/utsavmalla" aria-label="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
-                    <a href="https://www.linkedin.com/in/utsav-m-aa244b130/" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                </aside>
+            <div class="hero-ctas">
+              <a class="btn primary" href="#projects">View Projects</a>
+              <a class="btn ghost" href="#contact">Contact Me</a>
             </div>
-        </section>
+          </div>
 
-        <section id="about" class="about" aria-labelledby="about-heading">
-            <div class="container">
-                <h2 id="about-heading">About Me</h2>
-                <p>I design and build fast, accessible front-end experiences. I enjoy clean UI, robust CSS architecture, and simple JavaScript that enhances usability.</p>
-            </div>
-        </section>
+          <aside class="hero-social" aria-label="Social links">
+            <a href="https://github.com/utsavmalla" aria-label="GitHub"
+              ><i class="fa fa-github" aria-hidden="true"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/utsav-m-aa244b130/"
+              aria-label="LinkedIn"
+              ><i class="fa fa-linkedin" aria-hidden="true"></i
+            ></a>
+          </aside>
+        </div>
+      </section>
 
-        <section id="skills" class="skills" aria-labelledby="skills-heading">
-            <div class="container">
-                <h2 id="skills-heading">Skills</h2>
-                <div class="skills-grid">
-                    <article class="skill" tabindex="0">
-                        <h3>HTML &amp; Accessibility</h3>
-                        <progress value="90" max="100">90%</progress>
-                    </article>
-                    <article class="skill" tabindex="0">
-                        <h3>CSS (Flexbox & Grid)</h3>
-                        <progress value="88" max="100">88%</progress>
-                    </article>
-                    <article class="skill" tabindex="0">
-                        <h3>JavaScript</h3>
-                        <progress value="75" max="100">75%</progress>
-                    </article>
-                    <article class="skill" tabindex="0">
-                        <h3>UI/UX</h3>
-                        <progress value="80" max="100">80%</progress>
-                    </article>
-                </div>
-            </div>
-        </section>
+      <section id="about" class="about" aria-labelledby="about-heading">
+        <div class="container">
+          <h2 id="about-heading">About Me</h2>
+          <p>
+            I’m a mid-level JavaScript developer with hands-on experience
+            building and maintaining web applications using AngularJS, .NET MVC,
+            and Microsoft SQL Server. I have worked on real-world projects
+            involving business logic, database-driven systems, and UI
+            enhancements. My core strengths include JavaScript, jQuery, SQL
+            optimization, and working in structured enterprise environments
+            using tools like SVN, Azure Repos, and GitHub. I’m comfortable
+            collaborating with backend teams, understanding existing systems,
+            and gradually modernizing legacy codebases. To stay aligned with
+            current industry trends, I’ve started actively learning React and
+            Node.js, focusing on component-based architecture, REST APIs, and
+            modern JavaScript practices. My goal is to transition into a modern
+            frontend or full-stack JavaScript role. I’m currently exploring new
+            opportunities where I can contribute, learn, and grow—especially in
+            teams that value clean code, scalability, and continuous
+            improvement.
+          </p>
+        </div>
+      </section>
 
-        <section id="projects" class="projects" aria-labelledby="projects-heading">
-            <div class="container">
-                <h2 id="projects-heading">Projects</h2>
-                <div class="projects-grid">
-                    <article class="project-card" tabindex="0">
-                        <img src="images/project-1.jpg" alt="Screenshot of Project 1" loading="lazy" width="800" height="450">
-                        <div class="project-body">
-                            <h3>Project One</h3>
-                            <p>Short description of the project highlighting tech used and user impact.</p>
-                            <a class="card-link" href="#">View Case</a>
-                        </div>
-                    </article>
-                    <article class="project-card" tabindex="0">
-                        <img src="images/project-2.jpg" alt="Screenshot of Project 2" loading="lazy" width="800" height="450">
-                        <div class="project-body">
-                            <h3>Project Two</h3>
-                            <p>Short description of the project highlighting tech used and user impact.</p>
-                            <a class="card-link" href="#">View Case</a>
-                        </div>
-                    </article>
-                    <article class="project-card" tabindex="0">
-                        <img src="images/project-3.jpg" alt="Screenshot of Project 3" loading="lazy" width="800" height="450">
-                        <div class="project-body">
-                            <h3>Project Three</h3>
-                            <p>Short description of the project highlighting tech used and user impact.</p>
-                            <a class="card-link" href="#">View Case</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+      <section id="skills" class="skills" aria-labelledby="skills-heading">
+        <div class="container">
+          <h2 id="skills-heading">Skills</h2>
+          <div class="skills-grid">
+            <article class="skill" tabindex="0">
+              <h3>JavaScript</h3>
+              <progress value="80" max="100">80%</progress>
+            </article>
+            <article class="skill" tabindex="0">
+              <h3>AngularJs</h3>
+              <progress value="80" max="100">70%</progress>
+            </article>
+            <article class="skill" tabindex="0">
+              <h3>.NET MVC</h3>
+              <progress value="70" max="100">60%</progress>
+            </article>
+            <article class="skill" tabindex="0">
+              <h3>Microsoft SQL Server</h3>
+              <progress value="60" max="100">60%</progress>
+            </article>
+            <article class="skill" tabindex="0">
+              <h3>React</h3>
+              <progress value="20" max="100">20%</progress>
+            </article>
+            <article class="skill" tabindex="0">
+              <h3>Node.js</h3>
+              <progress value="30" max="100">30%</progress>
+            </article>
+            <article class="skill" tabindex="0">
+              <h3>GitHub</h3>
+              <progress value="50" max="100">50%</progress>
+          </div>
+        </div>
+      </section>
 
-        <section id="contact" class="contact" aria-labelledby="contact-heading">
-            <div class="container">
-                <h2 id="contact-heading">Contact</h2>
-                <p>If you'd like to work together or say hello, send a message below.</p>
+      <section
+        id="projects"
+        class="projects"
+        aria-labelledby="projects-heading"
+      >
+        <div class="container">
+          <h2 id="projects-heading">Projects</h2>
+          <div class="projects-grid">
+            <article class="project-card" tabindex="0">
+              <img
+                src="images/CampNepalPreview.png"
+                alt="Screenshot of Project 1"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="project-body">
+                <h3>CampNepal — Campground Explorer & Reviews</h3>
+                <p>
+                  CampNepal is a small full‑stack web app for discovering, creating and reviewing camping spots in Nepal. Built with Node.js and Express, views use EJS/ejs‑mate, data is stored in MongoDB via Mongoose, and input is validated with Joi; method‑override enables PUT/DELETE from forms. Users can browse campgrounds, add/edit listings, and leave reviews — making it easy to share and find trusted camping locations.
+                </p>
+                <a class="card-link" href="#">View Case</a>
+              </div>
+            </article>
+            <article class="project-card" tabindex="0">
+              <img
+                src="images/project-2.jpg"
+                alt="Screenshot of Project 2"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="project-body">
+                <h3>Project Two</h3>
+                <p>
+                  Short description of the project highlighting tech used and
+                  user impact.
+                </p>
+                <a class="card-link" href="#">View Case</a>
+              </div>
+            </article>
+            <article class="project-card" tabindex="0">
+              <img
+                src="images/project-3.jpg"
+                alt="Screenshot of Project 3"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="project-body">
+                <h3>Project Three</h3>
+                <p>
+                  Short description of the project highlighting tech used and
+                  user impact.
+                </p>
+                <a class="card-link" href="#">View Case</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-                <form class="contact-form" action="#" method="post" novalidate>
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text" required>
+      <section id="contact" class="contact" aria-labelledby="contact-heading">
+        <div class="container">
+          <h2 id="contact-heading">Contact</h2>
+          <p>
+            If you'd like to work together or say hello, send a message below.
+          </p>
 
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required>
+          <form class="contact-form" action="#" method="post" novalidate>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
 
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="6" required></textarea>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
 
-                    <button class="btn primary" type="submit">Send Message</button>
-                </form>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
 
-                <div class="social-links">
-                    <a href="https://github.com/utsavmalla">GitHub</a>
-                    <a href="https://www.linkedin.com/in/utsav-m-aa244b130/">LinkedIn</a>
-                </div>
-            </div>
-        </section>
+            <button class="btn primary" type="submit">Send Message</button>
+          </form>
 
+          <div class="social-links">
+            <a href="https://github.com/utsavmalla">GitHub</a>
+            <a href="https://www.linkedin.com/in/utsav-m-aa244b130/"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer" role="contentinfo">
-        <div class="container">
-            <small>&copy; <span id="year"></span> Utsav Malla — Built with semantic HTML, modern CSS and minimal JS.</small>
-        </div>
+      <div class="container">
+        <small
+          >&copy; <span id="year"></span> Utsav Malla — Built with semantic
+          HTML, modern CSS and minimal JS.</small
+        >
+      </div>
     </footer>
-
-</body>
+  </body>
 </html>
