@@ -1,0 +1,172 @@
+/* Modernized main stylesheet
+   Mobile-first, CSS variables for theme + spacing, responsive grid and animations
+*/
+
+/* Icon fonts kept for compatibility */
+@import url("font-awesome/css/font-awesome.min.css");
+@import url("micons/micons.css");
+
+/* ---------------------------------
+   Design tokens (variables)
+   --------------------------------- */
+:root{
+  --page-max-width: 1100px;
+  --container-padding: 1.6rem;
+  --space-1: 0.4rem;
+  --space-2: 0.8rem;
+  --space-3: 1.6rem;
+  --space-4: 2.4rem;
+  --radius: 8px;
+  --transition: 250ms cubic-bezier(.2,.8,.2,1);
+
+  /* colors (light mode) */
+  --bg: #0f1113;
+  --surface: #0b0c0d;
+  --muted: #9aa3b2;
+  --text: #e6eef6;
+  --accent: #ff7a59;
+  --accent-2: #f1ff5c;
+  --glass: rgba(255,255,255,0.04);
+}
+
+/* Dark mode variables are same namespace toggled with [data-theme="light"] on body */
+body[data-theme="light"]{
+  --bg: #ffffff;
+  --surface: #fbfdff;
+  --muted: #556270;
+  --text: #0b1320;
+  --accent: #ff5a3c;
+  --accent-2: #2b8cff;
+  --glass: rgba(11,19,32,0.04);
+}
+
+/* ---------------------------------
+   Global reset / base
+   --------------------------------- */
+*{box-sizing:border-box}
+html{font-size:16px}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+a{color:var(--accent);text-decoration:none}
+a:focus{outline:2px solid var(--accent);outline-offset:3px}
+
+.container{max-width:var(--page-max-width);margin:0 auto;padding:0 var(--container-padding)}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;background:var(--surface);padding:.4rem .8rem;border-radius:4px}
+
+/* ---------------------------------
+   Header
+   --------------------------------- */
+.site-header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(0,0,0,0.25),transparent);backdrop-filter:blur(6px)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:calc(var(--space-2)) 0}
+.logo{font-weight:700;letter-spacing:.02em;color:var(--text)}
+.site-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.2rem}
+.site-nav a{color:var(--muted);padding:.4rem .2rem;border-radius:6px}
+.site-nav a:hover,.site-nav a:focus{color:var(--text);background:var(--glass)}
+.header-actions{display:flex;gap:.5rem;align-items:center}
+#theme-toggle{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:.4rem .6rem;border-radius:6px;cursor:pointer}
+#theme-toggle:focus{outline:3px solid rgba(255,255,255,0.06)}
+
+/* ---------------------------------
+   Hero
+   --------------------------------- */
+.hero{padding:6rem 0 4rem;background:linear-gradient(180deg,rgba(0,0,0,0.15),transparent)}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.eyebrow{color:var(--accent);font-weight:600;margin:0 0 .4rem}
+.hero h1{font-family:Lora, serif;font-size:2.6rem;margin:.1rem 0;color:var(--text)}
+.lead{color:var(--muted);max-width:55ch}
+.hero-ctas{margin-top:var(--space-3);display:flex;gap:var(--space-2)}
+.btn{display:inline-block;padding:.8rem 1.2rem;border-radius:8px;border:1px solid transparent;transition:transform var(--transition),box-shadow var(--transition)}
+.btn.primary{background:var(--accent);color:var(--text);border-color:transparent}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+.hero-social{display:flex;flex-direction:column;gap:.8rem}
+.hero-social a{color:var(--muted);font-size:1.2rem}
+
+/* ---------------------------------
+   Sections
+   --------------------------------- */
+section{padding:3.2rem 0}
+h2{font-size:1.6rem;margin:.2rem 0 1rem}
+
+/* Skills grid */
+.skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.skill{background:var(--surface);padding:1rem;border-radius:10px}
+.skill h3{margin:0 0 .6rem}
+progress{width:100%;height:1rem}
+
+/* Projects */
+.projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+.project-card{background:var(--surface);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:transform var(--transition),box-shadow var(--transition)}
+.project-card img{width:100%;height:auto;display:block}
+.project-body{padding:1rem}
+.project-card:hover,.project-card:focus{transform:translateY(-6px);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+.card-link{color:var(--accent);font-weight:600}
+
+/* Contact form */
+.contact-form{display:grid;gap:1rem;max-width:680px}
+.contact-form input,.contact-form textarea{padding:.8rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)}
+.contact-form label{color:var(--muted)}
+
+/* Footer */
+.site-footer{border-top:1px solid rgba(255,255,255,0.03);padding:2rem 0;color:var(--muted)}
+
+/* ---------------------------------
+   Responsive
+   --------------------------------- */
+@media (max-width:900px){
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-social{flex-direction:row}
+}
+@media (max-width:600px){
+  :root{--container-padding:1rem}
+  .projects-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .hero{padding:3.2rem 0}
+  .hero h1{font-size:1.8rem}
+}
+
+/* ---------------------------------
+   Small utilities and animations
+   --------------------------------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 520ms ease,var(--transition)}
+.reveal.visible{opacity:1;transform:none}
+
+.focus-ring:focus{outline:3px solid var(--accent-2);outline-offset:3px}
+
+
+@media only screen and (max-width:600px) {
+	#intro {
+		min-height: 600px;
+	}
+	.intro-content h1 {
+		font-size: 4.6rem;
+		margin-bottom: .6rem;
+	}
+	.intro-content h5 {
+		font-size: 1.5rem;
+		margin-bottom: .3rem;
+		letter-spacing: .2rem;
+	}
+	.intro-content .intro-position {
+		font-size: 1.2rem;
+	}
+	.intro-content .intro-position span {
+		padding: 0 .6rem;
+	}
+	.intro-content .intro-position span::before, .intro-content .intro-position span::after {
+		display: none !important;
+	}
+	.intro-social {
+		font-size: 2.4rem;
+	}
+}
