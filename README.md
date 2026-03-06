@@ -62,6 +62,16 @@ This project is configured for GitHub Pages deployment with a custom domain.
 2. The `CNAME` file is automatically copied to `dist` during build
 3. Deploy the `dist` folder to GitHub Pages
 
+## Contact Form (Formspree)
+
+This site uses [Formspree](https://formspree.io/) to submit the contact form from GitHub Pages.
+
+1. Create a form in Formspree and copy the endpoint URL (looks like `https://formspree.io/f/xxxxxxx`)
+2. Set the endpoint in your environment:
+   - Local dev: create `.env.local` (see `.env.example`) and set `VITE_FORMSPREE_ENDPOINT`
+   - Production (GitHub Pages build): set `VITE_FORMSPREE_ENDPOINT` in your build/deploy environment
+3. Rebuild + redeploy
+
 ## Project Structure
 
 ```
