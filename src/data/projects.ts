@@ -18,21 +18,21 @@ export const projects: Project[] = [
     link: 'https://github.com/utsavmalla/Camp-Nepal',
   },
   {
-    id: 'project-2',
-    title: 'Project Two',
+    id: 'portfolio',
+    title: 'My Portfolio',
     description:
-      'Short description of the project highlighting tech used and user impact.',
-    image: '/images/project-2.jpg',
-    imageAlt: 'Screenshot of Project 2',
-    link: '#',
+      'A modern, responsive portfolio website built with React, TypeScript, and Vite. This project is configured for GitHub Pages and action for CI/CD with a custom domain.',
+    image: '/images/portfolio.png',
+    imageAlt: 'Screenshot of My Portfolio',
+    link: 'https://github.com/utsavmalla/utsavmalla.github.io',
   },
   {
-    id: 'project-3',
-    title: 'Project Three',
+    id: 'inspect-ease-dash',
+    title: 'InspectEase Dash',
     description:
-      'Short description of the project highlighting tech used and user impact.',
-    image: '/images/project-3.jpg',
-    imageAlt: 'Screenshot of Project 3',
-    link: '#',
+      'A dashboard for easy inspection management, built with React, TypeScript, Vite, tailwindcss and Build using cursor and loveldev tools. It provides a user-friendly interface for tracking and managing inspections efficiently.',
+    image: '/images/inspection esy dashboard.png',
+    imageAlt: 'Screenshot of InspectEase Dash',
+    link: 'https://github.com/TombTeam/inspect-ease-dash',
   },
 ]
