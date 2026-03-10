@@ -5,14 +5,12 @@ import { ProjectModel } from '../models/Project'
 import { ExperienceModel } from '../models/Experience'
 import { SkillModel } from '../models/Skill'
 
-// Import the static data from the frontend so we keep a single source of truth
-// Paths are relative to backend/src/scripts
-import { projects } from '../../../src/data/projects'
-import { experience } from '../../../src/data/experience'
-import { skills } from '../../../src/data/skills'
+import { projectsSeed } from '../seed-data/projects'
+import { experienceSeed } from '../seed-data/experience'
+import { skillsSeed } from '../seed-data/skills'
 
 async function seed() {
-  const mongoUri = process.env.MONGODB_URI
+  const mongoUri = process.env.MONGODB_URI //?? 'mongodb://127.0.0.1:27017/portfolio'
 
   if (!mongoUri) {
     throw new Error('MONGODB_URI is not set')
@@ -28,9 +26,9 @@ async function seed() {
     await ExperienceModel.deleteMany({})
     await SkillModel.deleteMany({})
 
-    await ProjectModel.insertMany(projects)
-    await ExperienceModel.insertMany(experience)
-    await SkillModel.insertMany(skills)
+    await ProjectModel.insertMany(projectsSeed)
+    await ExperienceModel.insertMany(experienceSeed)
+    await SkillModel.insertMany(skillsSeed)
 
     // eslint-disable-next-line no-console
     console.log('Seeding completed successfully')
