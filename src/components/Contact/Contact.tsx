@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+import { useMemo, useState, FormEvent, ChangeEvent } from 'react'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 interface FormErrors {
@@ -6,6 +6,8 @@ interface FormErrors {
   email?: string
   message?: string
 }
+
+type SubmitStatus = 'idle' | 'success' | 'error'
 
 const Contact = () => {
   const contactRef = useScrollReveal()
@@ -16,6 +18,14 @@ const Contact = () => {
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle')
+  const [submitMessage, setSubmitMessage] = useState<string>('')
+  const [honeypot, setHoneypot] = useState('')
+
+  const formspreeEndpoint = useMemo(() => {
+    const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined
+    return endpoint?.trim() || ''
+  }, [])
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
@@ -41,26 +51,84 @@ const Contact = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    setSubmitStatus('idle')
+    setSubmitMessage('')
+
+    // Honeypot: if filled, treat as bot submission.
+    if (honeypot.trim()) {
+      return
+    }
+
     if (!validateForm()) {
       return
     }
 
     setIsSubmitting(true)
 
-    // Simulate form submission
-    // Replace this with actual form submission logic (Formspree, Netlify Forms, etc.)
-    setTimeout(() => {
-      alert(
-        'This demo form does not send messages. Replace with your form endpoint or use Formspree/Netlify Forms.'
-      )
+    if (!formspreeEndpoint) {
       setIsSubmitting(false)
-      setFormData({ name: '', email: '', message: '' })
-      setErrors({})
-    }, 800)
+      setSubmitStatus('error')
+      setSubmitMessage(
+        'Contact form is not configured yet. Please set VITE_FORMSPREE_ENDPOINT and redeploy.'
+      )
+      return
+    }
+
+    const controller = new AbortController()
+    const timeout = window.setTimeout(() => controller.abort(), 15000)
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+        signal: controller.signal,
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setSubmitMessage("Thanks! Your message has been sent.")
+        setFormData({ name: '', email: '', message: '' })
+        setErrors({})
+        setHoneypot('')
+        return
+      }
+
+      let errorText = 'Sorry—something went wrong while sending your message.'
+      try {
+        const data = (await response.json()) as { error?: string }
+        if (typeof data?.error === 'string' && data.error.trim()) {
+          errorText = data.error
+        }
+      } catch {
+        // ignore JSON parse errors
+      }
+
+      setSubmitStatus('error')
+      setSubmitMessage(errorText)
+    } catch (err) {
+      const isAbort = err instanceof DOMException && err.name === 'AbortError'
+      setSubmitStatus('error')
+      setSubmitMessage(
+        isAbort
+          ? 'Request timed out. Please check your connection and try again.'
+          : 'Network error. Please check your connection and try again.'
+      )
+    } finally {
+      window.clearTimeout(timeout)
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
@@ -79,6 +147,17 @@ const Contact = () => {
         </p>
 
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
+          <input
+            type="text"
+            name="company"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: 'absolute', left: '-9999px', height: 0, width: 0, opacity: 0 }}
+          />
+
           <label htmlFor="name">Name</label>
           <input
             id="name"
@@ -137,6 +216,17 @@ const Contact = () => {
           >
             {isSubmitting ? 'Sending…' : 'Send Message'}
           </button>
+
+          {submitStatus !== 'idle' && (
+            <div
+              role="status"
+              aria-live="polite"
+              className={submitStatus === 'success' ? 'success' : 'error'}
+              style={{ marginTop: 12 }}
+            >
+              {submitMessage}
+            </div>
+          )}
         </form>
 
         <div className="social-links">

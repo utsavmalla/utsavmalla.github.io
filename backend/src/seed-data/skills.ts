@@ -1,9 +1,9 @@
-export interface Skill {
+export interface SkillSeed {
   name: string
   proficiency: number
 }
 
-export const skills: Skill[] = [
+export const skillsSeed: SkillSeed[] = [
   { name: 'JavaScript', proficiency: 80 },
   { name: 'AngularJs', proficiency: 70 },
   { name: '.NET MVC', proficiency: 60 },
@@ -12,6 +12,4 @@ export const skills: Skill[] = [
   { name: 'Node.js', proficiency: 30 },
   { name: 'GitHub', proficiency: 50 },
 ]
-
-export default skills
 

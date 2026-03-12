@@ -1,8 +1,22 @@
+import { useEffect, useState } from 'react'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 import { projects } from '../../data/projects'
+import type { Project } from '../../data/projects'
+import { fetchProjects } from '../../api/client'
 
 const Projects = () => {
   const projectsRef = useScrollReveal()
+  const [data, setData] = useState<Project[]>(projects)
+
+  useEffect(() => {
+    fetchProjects()
+      .then((remote) => {
+        setData(remote)
+      })
+      .catch(() => {
+        // On failure, keep using fallbackProjects
+      })
+  }, [])
 
   return (
     <section
@@ -14,7 +28,7 @@ const Projects = () => {
       <div className="container">
         <h2 id="projects-heading">Projects</h2>
         <div className="projects-grid">
-          {projects.map((project) => (
+          {data.map((project) => (
             <article key={project.id} className="project-card" tabIndex={0}>
               <img
                 src={project.image}

@@ -1,4 +1,4 @@
-export interface Project {
+export interface ProjectSeed {
   id: string
   title: string
   description: string
@@ -7,7 +7,7 @@ export interface Project {
   link: string
 }
 
-export const projects: Project[] = [
+export const projectsSeed: ProjectSeed[] = [
   {
     id: 'campnepal',
     title: 'CampNepal — Campground Explorer & Reviews',
@@ -36,3 +36,4 @@ export const projects: Project[] = [
     link: 'https://github.com/TombTeam/inspect-ease-dash',
   },
 ]
+
