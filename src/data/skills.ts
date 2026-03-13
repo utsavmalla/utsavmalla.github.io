@@ -11,6 +11,8 @@ export const skills: Skill[] = [
   { name: 'React', proficiency: 20 },
   { name: 'Node.js', proficiency: 30 },
   { name: 'GitHub', proficiency: 50 },
+  { name: 'Testing', proficiency: 50 },
+
 ]
 
 export default skills
