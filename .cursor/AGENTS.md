@@ -6,6 +6,7 @@ This file is loaded by Cursor to reduce repeated context and to keep future edit
 
 Frontend (project root):
 - `npm run dev` (Vite dev server)
+- `npm run dev:all` (starts backend + frontend locally; requires MongoDB running)
 - `npm run build` (runs `tsc`, then `vite build`, then copies CNAME)
 - `npm run preview` (previews production build)
 - `npm run lint`

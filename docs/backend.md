@@ -23,6 +23,9 @@ Set the following variables in `backend/.env`:
 
 ## Run locally
 
+##Run Mongodb
+mongod
+
 ```bash
 cd backend
 npm run dev
