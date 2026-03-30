@@ -15,7 +15,7 @@ Used by:
 - Backend model: `backend/src/models/Project.ts`
 
 Fields:
-- `id: string` (unique)
+- `id: string` (unique, auto-generated from title if not provided)
 - `title: string`
 - `description: string`
 - `image: string` (public path like `/images/foo.png`)

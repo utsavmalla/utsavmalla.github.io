@@ -18,13 +18,13 @@ router.post('/', async (req, res) => {
   try {
     const { id, title, description, image, imageAlt, link } = req.body
 
-    if (!id || !title || !description || !image || !imageAlt || !link) {
-      res.status(400).json({ message: 'All fields are required' })
+    if (!title || !description || !image || !imageAlt || !link) {
+      res.status(400).json({ message: 'All fields except ID are required' })
       return
     }
 
     const newProject = new ProjectModel({
-      id,
+      ...(id && { id }),
       title,
       description,
       image,

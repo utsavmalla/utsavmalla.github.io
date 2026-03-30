@@ -25,7 +25,7 @@ export async function fetchSkills() {
 }
 
 export async function createProject(data: {
-  id: string
+  id?: string
   title: string
   description: string
   image: string
