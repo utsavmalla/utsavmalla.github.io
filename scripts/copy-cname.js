@@ -4,9 +4,21 @@ import { join } from 'path'
 try {
   const distPath = 'dist'
   
-  // Copy CNAME for custom domain
-  copyFileSync('CNAME', join(distPath, 'CNAME'))
-  console.log('✓ CNAME copied to dist')
+  // Detect which branch this build is for
+  // GitHub Actions provides GITHUB_REF environment variable
+  const githubRef = process.env.GITHUB_REF || ''
+  const isStaging = githubRef === 'refs/heads/staging'
+  
+  console.log(`Branch: ${githubRef || 'local'}`)
+  
+  // Only copy CNAME for production (main branch)
+  // Staging uses GitHub Pages default URL: staging.utsavmalla.github.io
+  if (!isStaging) {
+    copyFileSync('CNAME', join(distPath, 'CNAME'))
+    console.log('✓ CNAME copied to dist (production deployment)')
+  } else {
+    console.log('✓ Skipped CNAME (staging uses GitHub Pages default: staging.utsavmalla.github.io)')
+  }
   
   // Create .nojekyll to prevent Jekyll from processing files (fixes MIME type issues)
   writeFileSync(join(distPath, '.nojekyll'), '')
