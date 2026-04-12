@@ -34,3 +34,6 @@ dist-ssr
 #vite dependencies
 .vite/deps/
 .vite/assets/
+
+# Seed credentials
+seed-credentials.*
