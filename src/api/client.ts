@@ -37,11 +37,49 @@ export async function createProject(data: {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify(data),
   })
   if (!res.ok) {
     throw new Error('Failed to create project')
   }
   return res.json()
+}
+
+export async function login(username: string, password: string) {
+  const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify({ username, password }),
+  });
+  if (!res.ok) {
+    throw new Error('Failed to login');
+  }
+  return res.json();
+}
+
+export async function logout() {
+  const res = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+    method: 'POST',
+    credentials: 'include',
+  });
+  if (!res.ok) {
+    throw new Error('Failed to logout');
+  }
+  return res.json();
+}
+
+export async function checkAuth() {
+  const res = await fetch(`${API_BASE_URL}/api/auth/check`, {
+    method: 'GET',
+    credentials: 'include',
+  });
+  if (!res.ok) {
+    throw new Error('Not authenticated');
+  }
+  return res.json();
 }
 
