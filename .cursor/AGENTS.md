@@ -33,7 +33,7 @@ Vite + React frontend renders sections. On mount, `Projects`, `Experience`, and 
 If the API request fails, each component keeps using the local fallback arrays in `src/data/*`.
 
 ### Data flow diagram
-
+  - If backend is failing, components should still display fallback content (so the UI should not be blank)
 ```mermaid
 flowchart LR
   ProjectsUI[React Components (Projects/Experience/Skills)] -->|fetchProjects()/fetchExperience()/fetchSkills()| ApiClient[src/api/client.ts]

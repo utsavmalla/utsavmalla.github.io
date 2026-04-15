@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { ProjectModel } from '../models/Project'
+import { verifyAuth } from '../middleware/auth'
 
 const router = Router()
 
@@ -14,7 +15,7 @@ router.get('/', async (_req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', verifyAuth, async (req, res) => {
   try {
     const { id, title, description, image, imageAlt, link } = req.body
 

@@ -1,17 +1,19 @@
 import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose'
 
 import projectsRouter from './routes/projects'
 import experienceRouter from './routes/experience'
 import skillsRouter from './routes/skills'
+import authRouter from './routes/auth'
 
 const app = express()
 
 const port = process.env.PORT ? Number(process.env.PORT) : 4000
 const mongoUri = process.env.MONGODB_URI as string
-const corsOrigin = process.env.CORS_ORIGIN || '*'
+const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:5173'
 
 if (!mongoUri) {
   throw new Error('MONGODB_URI is not set')
@@ -20,14 +22,17 @@ if (!mongoUri) {
 app.use(
   cors({
     origin: corsOrigin,
+    credentials: true,
   })
 )
+app.use(cookieParser())
 app.use(express.json())
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' })
 })
 
+app.use('/api/auth', authRouter)
 app.use('/api/projects', projectsRouter)
 app.use('/api/experience', experienceRouter)
 app.use('/api/skills', skillsRouter)
