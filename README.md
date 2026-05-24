@@ -48,6 +48,7 @@ See:
   - `MONGODB_URI` (required)
   - `PORT` (default `4000`)
   - `CORS_ORIGIN` (default `*`)
+  - `SUPABASE_URL` / `SUPABASE_SECRET_KEY` / `SUPABASE_CV_BUCKET` (CV upload/download)
 
 Related docs:
 - [docs/backend.md](docs/backend.md)

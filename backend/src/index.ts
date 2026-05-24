@@ -8,6 +8,7 @@ import projectsRouter from './routes/projects'
 import experienceRouter from './routes/experience'
 import skillsRouter from './routes/skills'
 import authRouter from './routes/auth'
+import cvRouter from './routes/cv'
 
 const app = express()
 
@@ -36,6 +37,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/projects', projectsRouter)
 app.use('/api/experience', experienceRouter)
 app.use('/api/skills', skillsRouter)
+app.use('/api/cv', cvRouter)
 
 async function start() {
   try {

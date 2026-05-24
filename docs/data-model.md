@@ -45,10 +45,31 @@ Fields:
 - `name: string`
 - `proficiency: number` (0–100)
 
+## CV
+
+Used by:
+- Backend model: `backend/src/models/Cv.ts`
+- Backend routes: `backend/src/routes/cv.ts`
+- Frontend admin page: `src/pages/ManageCv.tsx`
+
+Fields:
+- `key: "current"` (singleton document for the active CV)
+- `originalName: string`
+- `storageBucket: string` (Supabase Storage bucket)
+- `storagePath: string` (Supabase Storage object path)
+- `mimeType: "application/pdf"`
+- `size: number`
+- `uploadedBy?: string`
+- `createdAt: Date`
+- `updatedAt: Date`
+
+The PDF file is stored in Supabase Storage. MongoDB stores only metadata and determines which uploaded file is the current downloadable CV.
+
 ## Keeping data consistent
 
 When you add/update portfolio content, decide which mode you support:
 
 - **Frontend-only mode**: edit only `src/data/*`.
 - **Frontend + backend mode**: update both `src/data/*` and `backend/src/seed-data/*`, then re-run `npm run seed` in `backend/`.
+- **CV uploads**: use the protected `/admin/cv` page; no frontend fallback array or seed file is used.
 
