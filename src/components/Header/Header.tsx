@@ -30,7 +30,10 @@ const Header = () => {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' })
         ;(target as HTMLElement).focus({ preventScroll: true })
       }
+      return
     }
+
+    setIsMobileMenuOpen(false)
   }
 
   return (
@@ -97,6 +100,16 @@ const Header = () => {
             <li>
               <a href="#projects" onClick={handleNavClick}>
                 Projects
+              </a>
+            </li>
+            <li>
+              <a href="/add-project" onClick={handleNavClick}>
+                Add Project
+              </a>
+            </li>
+            <li>
+              <a href="/admin/cv" onClick={handleNavClick}>
+                Manage CV
               </a>
             </li>
             <li>

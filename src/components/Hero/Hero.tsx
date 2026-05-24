@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal'
+import { getCvDownloadUrl } from '../../api/client'
 
 const Hero = () => {
   const heroRef = useScrollReveal()
@@ -33,6 +34,9 @@ const Hero = () => {
             </a>
             <a className="btn ghost" href="#contact" onClick={handleNavClick}>
               Contact Me
+            </a>
+            <a className="btn ghost" href={getCvDownloadUrl()}>
+              <i className="fa fa-download" aria-hidden="true"></i> Download CV
             </a>
           </div>
         </div>

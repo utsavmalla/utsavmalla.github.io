@@ -25,12 +25,17 @@ Backend (`backend/`):
   - `MONGODB_URI` (required)
   - `PORT` (optional, default: `4000`)
   - `CORS_ORIGIN` (optional, default: `*`)
+  - `SUPABASE_URL` (required for CV upload/download)
+  - `SUPABASE_SECRET_KEY` (server-only; required for CV upload/download)
+  - `SUPABASE_CV_BUCKET` (optional, default: `cv`)
 
 ## Architecture (high level)
 
 Vite + React frontend renders sections. On mount, `Projects`, `Experience`, and `Skills` fetch data from the Express backend.
 
 If the API request fails, each component keeps using the local fallback arrays in `src/data/*`.
+
+CV files are stored in Supabase Storage. MongoDB stores the active CV metadata, and `GET /api/cv/download` creates a short-lived signed download URL for public visitors.
 
 ### Data flow diagram
   - If backend is failing, components should still display fallback content (so the UI should not be blank)
@@ -56,6 +61,8 @@ flowchart LR
 
 Frontend:
 - `src/api/client.ts` (defines `API_BASE_URL` and `fetchProjects/Experience/Skills`)
+- `src/pages/ManageCv.tsx` (admin CV upload UI)
+- `src/components/Hero/Hero.tsx` (CV download CTA)
 - `src/components/Projects/Projects.tsx` (uses fallback `src/data/projects.ts`)
 - `src/components/Experience/Experience.tsx` (uses fallback `src/data/experience.ts`)
 - `src/components/Skills/Skills.tsx` (uses fallback `src/data/skills.ts`)
@@ -65,6 +72,9 @@ Frontend:
 
 Backend:
 - `backend/src/index.ts` (Express app + routes mount points)
+- `backend/src/routes/cv.ts` (public CV metadata/download + protected upload)
+- `backend/src/models/Cv.ts` (current CV metadata)
+- `backend/src/lib/supabase.ts` (server-only Supabase client)
 - `backend/src/routes/projects.ts`
 - `backend/src/routes/experience.ts`
 - `backend/src/routes/skills.ts`
@@ -81,6 +91,7 @@ Backend:
   - `Project` fields: `id`, `title`, `description`, `image`, `imageAlt`, `link`
   - `ExperienceItem` fields: `title`, `duration`, `responsibilities[]`
   - `Skill` fields: `name`, `proficiency`
+  - `Cv` stores metadata only; never store PDF bytes in MongoDB
 
 ## Recommended Cursor Workflow (prompt checklist)
 
@@ -112,3 +123,8 @@ Tip: Ask Cursor to “summarize the impact before editing” to reduce unnecessa
   - Confirm backend routes work: `GET /api/projects`, `/api/experience`, `/api/skills`
   - If backend is failing, components should still display fallback content (so the UI should not be blank)
 
+- Update CV:
+  - Log in as admin
+  - Open `/admin/cv`
+  - Upload a PDF file
+  - Verify `GET /api/cv` returns metadata and the hero `Download CV` button reaches `GET /api/cv/download`

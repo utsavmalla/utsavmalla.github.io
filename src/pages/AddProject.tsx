@@ -68,7 +68,16 @@ const AddProject = () => {
             
             <div>
               <label htmlFor="description" style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--muted)' }}>Description</label>
-              <textarea required id="description" name="description" value={formData.description} onChange={handleChange} rows={4} style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid rgba(255, 255, 255, 0.06)', backgroundColor: 'var(--surface)', color: 'var(--text)' }}></textarea>
+              <textarea
+                required
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                rows={7}
+                placeholder={'Write the summary first.\n\nAdd another line or paragraph for stack, features, or impact.'}
+                style={{ width: '100%', padding: '0.75rem', borderRadius: '6px', border: '1px solid rgba(255, 255, 255, 0.06)', backgroundColor: 'var(--surface)', color: 'var(--text)', lineHeight: 1.6, resize: 'vertical' }}
+              ></textarea>
             </div>
             
             <div>

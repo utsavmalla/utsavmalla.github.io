@@ -39,7 +39,7 @@ const Projects = () => {
               />
               <div className="project-body">
                 <h3>{project.title}</h3>
-                <p>{project.description}</p>
+                <p className="project-description">{project.description}</p>
                 <a
                   className="card-link"
                   href={project.link}

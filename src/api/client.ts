@@ -1,5 +1,9 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000'
 
+export function getCvDownloadUrl() {
+  return `${API_BASE_URL}/api/cv/download`
+}
+
 export async function fetchProjects() {
   const res = await fetch(`${API_BASE_URL}/api/projects`)
   if (!res.ok) {
@@ -43,6 +47,32 @@ export async function createProject(data: {
   if (!res.ok) {
     throw new Error('Failed to create project')
   }
+  return res.json()
+}
+
+export async function fetchCv() {
+  const res = await fetch(`${API_BASE_URL}/api/cv`)
+  if (!res.ok) {
+    throw new Error('Failed to fetch CV metadata')
+  }
+  return res.json()
+}
+
+export async function uploadCv(file: File) {
+  const formData = new FormData()
+  formData.append('cv', file)
+
+  const res = await fetch(`${API_BASE_URL}/api/cv`, {
+    method: 'PUT',
+    credentials: 'include',
+    body: formData,
+  })
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => null)
+    throw new Error(data?.message || 'Failed to upload CV')
+  }
+
   return res.json()
 }
 
