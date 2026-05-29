@@ -58,6 +58,8 @@ Related docs:
 
 - [docs/backend.md](docs/backend.md)
 - [docs/data-model.md](docs/data-model.md)
+- [docs/project-guide.md](docs/project-guide.md)
+- [docs/project-rules.md](docs/project-rules.md)
 - [docs/deployment.md](docs/deployment.md)
 - [docs/contact-form.md](docs/contact-form.md)
 
@@ -77,14 +79,15 @@ backend/         # optional Express API + MongoDB
 docs/            # developer documentation
 ```
 
-## Cursor repo context (markdown to maintain)
+## Agent repo context (markdown to maintain)
 
-- `.cursor/AGENTS.md` is the **primary Cursor context note** for this repo (how to run, architecture/data flow, conventions, and a prompt checklist). Keep it updated when you change scripts, env vars, endpoints, or data shapes.
-- Optional: add `.cursor/rules/*.md` if you want stricter, enforceable coding conventions later.
+- `AGENTS.md` is the shared entry point for all AI agents working in this repo.
+- Keep durable structure and architecture notes in `docs/project-guide.md`.
+- Keep durable coding rules in `docs/project-rules.md`.
 - Recommended split of responsibilities:
-  - Keep `README.md` short and stable (entry point + links)
-  - Keep `docs/*.md` for longer setup/deployment guides
-  - Keep `.cursor/AGENTS.md` for “how to work in this repo with Cursor” (prompt checklist + source-of-truth notes)
+  - Keep `README.md` short and stable
+  - Keep `AGENTS.md` short and agent-focused
+  - Keep `docs/*.md` for project guide, rules, setup, and deployment details
 
 ## License
 

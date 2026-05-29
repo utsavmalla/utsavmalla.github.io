@@ -12,6 +12,16 @@ export async function fetchProjects() {
   return res.json()
 }
 
+export async function fetchAdminProjects() {
+  const res = await fetch(`${API_BASE_URL}/api/projects/admin`, {
+    credentials: 'include',
+  })
+  if (!res.ok) {
+    throw new Error('Failed to fetch projects')
+  }
+  return res.json()
+}
+
 export async function fetchExperience() {
   const res = await fetch(`${API_BASE_URL}/api/experience`)
   if (!res.ok) {
@@ -46,6 +56,43 @@ export async function createProject(data: {
   })
   if (!res.ok) {
     throw new Error('Failed to create project')
+  }
+  return res.json()
+}
+
+export async function updateProject(
+  projectId: string,
+  data: {
+    title: string
+    description: string
+    image: string
+    imageAlt: string
+    link: string
+  }
+) {
+  const res = await fetch(`${API_BASE_URL}/api/projects/${projectId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify(data),
+  })
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => null)
+    throw new Error(errorData?.message || 'Failed to update project')
+  }
+  return res.json()
+}
+
+export async function softDeleteProject(projectId: string) {
+  const res = await fetch(`${API_BASE_URL}/api/projects/${projectId}`, {
+    method: 'DELETE',
+    credentials: 'include',
+  })
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => null)
+    throw new Error(errorData?.message || 'Failed to delete project')
   }
   return res.json()
 }

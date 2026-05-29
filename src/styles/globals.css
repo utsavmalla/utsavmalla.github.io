@@ -436,6 +436,259 @@ progress::-moz-progress-bar {
   margin-top: auto;
 }
 
+/* Admin */
+.admin-page {
+  min-height: 80vh;
+  padding: 4rem 0;
+}
+
+.admin-page-inner {
+  display: grid;
+  gap: 2rem;
+}
+
+.admin-heading {
+  max-width: 680px;
+}
+
+.admin-heading h1 {
+  font-family: Lora, serif;
+  font-size: 2.4rem;
+  margin: 0 0 0.75rem;
+}
+
+.admin-heading p:last-child {
+  color: var(--muted);
+  margin: 0;
+}
+
+.admin-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.admin-action-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 10rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.admin-action-card:hover,
+.admin-action-card:focus {
+  transform: translateY(-4px);
+  border-color: rgba(255, 122, 89, 0.45);
+  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.38);
+}
+
+.admin-action-card span:first-child {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.admin-action-card strong {
+  font-size: 1.1rem;
+}
+
+.admin-action-card small {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.ui-status-message {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+}
+
+.ui-status-message.is-error {
+  color: var(--accent);
+  background: rgba(255, 0, 0, 0.1);
+  border-color: rgba(255, 122, 89, 0.28);
+}
+
+.ui-status-message.is-success {
+  color: var(--text);
+  background: rgba(46, 204, 113, 0.14);
+  border-color: rgba(46, 204, 113, 0.22);
+}
+
+.admin-muted {
+  color: var(--muted);
+  margin: 0;
+}
+
+.ui-status-message.is-inline {
+  padding: 0.75rem 0.85rem;
+  font-weight: 600;
+}
+
+.ui-status-message.is-progress {
+  color: var(--text);
+  background: var(--glass);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.project-manager {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.project-manager-panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.project-manager-panel h2 {
+  margin: 0;
+}
+
+.project-manager-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-project-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.admin-project-list-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius);
+  background: var(--glass);
+}
+
+.admin-project-list-item.is-selected {
+  border-color: rgba(255, 122, 89, 0.45);
+}
+
+.admin-project-list-item h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.admin-project-list-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.admin-project-actions,
+.admin-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.btn.danger {
+  background: transparent;
+  color: var(--accent);
+  border-color: rgba(255, 122, 89, 0.38);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+.admin-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.admin-form textarea {
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ui-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(6px);
+}
+
+.ui-dialog {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 30rem);
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+}
+
+.ui-dialog h2 {
+  margin: 0;
+}
+
+.ui-dialog p {
+  margin: 0;
+}
+
+.ui-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
 /* Experience */
 .experience-list {
   display: flex;
@@ -534,6 +787,10 @@ progress::-moz-progress-bar {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .admin-actions,
+  .project-manager {
+    grid-template-columns: 1fr;
+  }
   .hero-inner {
     grid-template-columns: 1fr;
   }
@@ -576,6 +833,9 @@ progress::-moz-progress-bar {
     display: flex;
   }
   .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-actions {
     grid-template-columns: 1fr;
   }
   .skills-grid {

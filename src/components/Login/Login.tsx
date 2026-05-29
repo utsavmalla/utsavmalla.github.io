@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     try {
       await login(username, password);
       // Wait for session to set and navigate
-      navigate('/add-project');
+      navigate('/admin');
     } catch (err) {
       setError('Invalid username or password');
     } finally {

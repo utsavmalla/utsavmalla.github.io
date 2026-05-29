@@ -1,5 +1,11 @@
-Related docs:
+# Agent entry point
 
-- `README.md` short and stable (entry point + links)
-- `docs/*.md` for longer setup/deployment guides
-- `.cursor/AGENTS.md` for “how to work in this repo with Cursor” (prompt checklist + source-of-truth notes)
+This file is the shared entry point for all AI agents working in this repo.
+
+Read these first:
+
+- `README.md` for the project overview.
+- `docs/project-guide.md` for folder structure, architecture, and data flow.
+- `docs/project-rules.md` for durable coding rules.
+- `docs/backend.md`, `docs/data-model.md`, `docs/deployment.md`, and `docs/contact-form.md` for deeper topic docs.
+
