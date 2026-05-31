@@ -37,3 +37,6 @@ dist-ssr
 
 # Seed credentials
 seed-credentials.*
+
+#Codex files
+.codex-screenshots
