@@ -23,9 +23,8 @@ const Hero = () => {
           <p className="eyebrow">Hello, I'm</p>
           <h1 id="hero-heading">Utsav Malla</h1>
           <p className="lead">
-            JavaScript Developer | AngularJS, .NET MVC, SQL Server | React &
-            Node.js (Learning) | Web Applications | Front-end Developer • UI/UX
-            Designer — building accessible, performant web experiences.
+            Full Stack JavaScript Developer | AngularJS, .NET MVC, SQL Server | React &
+            Node.js | Web Applications | Front-end Developer 
           </p>
 
           <div className="hero-ctas">

@@ -9,7 +9,7 @@ const About = () => {
         <h2 id="about-heading">About Me</h2>
         <div className="about-copy">
           <p>
-            I'm a mid-level JavaScript developer with hands-on experience
+            I'm a JavaScript developer with hands-on experience
             building and maintaining web applications using AngularJS, .NET MVC,
             and Microsoft SQL Server. I have worked on real-world projects
             involving business logic, database-driven systems, and UI
