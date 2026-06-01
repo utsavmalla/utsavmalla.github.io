@@ -1,5 +1,9 @@
 import mongoose, { Schema, Document } from 'mongoose'
 
+export const editableProjectFields = ['title', 'description', 'image', 'imageAlt', 'link'] as const
+export type EditableProjectField = (typeof editableProjectFields)[number]
+export type ProjectUpdateInput = Record<EditableProjectField, string>
+
 export interface ProjectDocument extends Document {
   id: string
   title: string
@@ -7,6 +11,8 @@ export interface ProjectDocument extends Document {
   image: string
   imageAlt: string
   link: string
+  deletedAt?: Date
+  deletedBy?: string
 }
 
 const ProjectSchema = new Schema<ProjectDocument>(
@@ -17,6 +23,8 @@ const ProjectSchema = new Schema<ProjectDocument>(
     image: { type: String, required: true },
     imageAlt: { type: String, required: true },
     link: { type: String, required: true },
+    deletedAt: { type: Date, required: false },
+    deletedBy: { type: String, required: false },
   },
   { timestamps: true }
 )
@@ -54,4 +62,34 @@ ProjectSchema.pre('save', async function () {
 
 export const ProjectModel = mongoose.model<ProjectDocument>('Project', ProjectSchema)
 
+export function findActiveProjects() {
+  return ProjectModel.find({ deletedAt: { $exists: false } }).sort({ createdAt: 1 }).lean()
+}
+
+export async function updateActiveProject(projectId: string, updates: ProjectUpdateInput) {
+  const project = await ProjectModel.findById(projectId)
+
+  if (!project || project.deletedAt) {
+    return null
+  }
+
+  editableProjectFields.forEach((field) => {
+    project[field] = updates[field]
+  })
+
+  return project.save()
+}
+
+export async function softDeleteProject(projectId: string, deletedBy: string) {
+  const project = await ProjectModel.findById(projectId)
+
+  if (!project || project.deletedAt) {
+    return null
+  }
+
+  project.deletedAt = new Date()
+  project.deletedBy = deletedBy
+
+  return project.save()
+}
 

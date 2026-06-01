@@ -103,13 +103,8 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="/add-project" onClick={handleNavClick}>
-                Add Project
-              </a>
-            </li>
-            <li>
-              <a href="/admin/cv" onClick={handleNavClick}>
-                Manage CV
+              <a href="/admin" onClick={handleNavClick}>
+                Admin
               </a>
             </li>
             <li>
