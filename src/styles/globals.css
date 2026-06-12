@@ -160,7 +160,9 @@ a:focus {
 }
 
 .site-nav a:hover,
-.site-nav a:focus {
+.site-nav a:focus-visible,
+.site-nav a.is-active,
+.site-nav a[aria-current='page'] {
   color: var(--text);
   background: var(--glass);
 }
@@ -1021,6 +1023,21 @@ h2 {
   .hero h1 {
     font-size: 1.8rem;
   }
+  .hero-ctas {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .hero-ctas .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.62rem 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
   .site-nav ul {
     width: 100%;
     flex-direction: column;
@@ -1029,16 +1046,22 @@ h2 {
     margin: 0;
     padding: 0.85rem;
     border-radius: 14px;
-    background: rgba(0, 0, 0, 0.22);
+    background: rgba(11, 12, 13, 0.96);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(14px);
+  }
+  body[data-theme="light"] .site-nav ul {
+    background: rgba(251, 253, 255, 0.98);
+    border-color: rgba(11, 19, 32, 0.12);
+    box-shadow: 0 18px 40px rgba(11, 19, 32, 0.16);
   }
   .site-nav a {
     display: block;
     width: 100%;
     padding: 0.8rem 0.9rem;
     border-radius: 10px;
+    color: var(--text);
   }
 }
 

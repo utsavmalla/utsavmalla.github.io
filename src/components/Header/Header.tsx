@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTheme } from '../../hooks/useTheme'
+import HeaderNav from './HeaderNav'
+
+const SECTION_IDS = ['hero', 'about', 'skills', 'projects', 'contact'] as const
+
+type SectionId = (typeof SECTION_IDS)[number]
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSectionId, setActiveSectionId] = useState<SectionId>('hero')
+  const clickedNavLinkRef = useRef<HTMLAnchorElement | null>(null)
   const navMenuId = 'primary-navigation'
+  const isHomePage = window.location.pathname === '/'
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,10 +28,73 @@ const Header = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (!isHomePage) {
+      return
+    }
+
+    let animationFrameId = 0
+
+    const updateActiveSection = () => {
+      animationFrameId = 0
+
+      const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0
+      const activeLine = window.scrollY + headerHeight + 24
+      const documentHeight = document.documentElement.scrollHeight
+      const isNearPageBottom = window.scrollY + window.innerHeight >= documentHeight - 16
+
+      if (isNearPageBottom && document.getElementById('contact')) {
+        setActiveSectionId('contact')
+        return
+      }
+
+      const currentSection = SECTION_IDS.reduce<SectionId>((current, sectionId) => {
+        const section = document.getElementById(sectionId)
+
+        if (!section) {
+          return current
+        }
+
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY
+
+        return sectionTop <= activeLine ? sectionId : current
+      }, 'hero')
+
+      setActiveSectionId(currentSection)
+    }
+
+    const requestActiveSectionUpdate = () => {
+      const clickedNavLink = clickedNavLinkRef.current
+
+      if (clickedNavLink && clickedNavLink === document.activeElement) {
+        clickedNavLink.blur()
+        clickedNavLinkRef.current = null
+      }
+
+      if (animationFrameId === 0) {
+        animationFrameId = window.requestAnimationFrame(updateActiveSection)
+      }
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', requestActiveSectionUpdate, { passive: true })
+    window.addEventListener('resize', requestActiveSectionUpdate)
+
+    return () => {
+      window.removeEventListener('scroll', requestActiveSectionUpdate)
+      window.removeEventListener('resize', requestActiveSectionUpdate)
+
+      if (animationFrameId !== 0) {
+        window.cancelAnimationFrame(animationFrameId)
+      }
+    }
+  }, [isHomePage])
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute('href')
     if (href && href.startsWith('#')) {
       e.preventDefault()
+      clickedNavLinkRef.current = e.currentTarget
       setIsMobileMenuOpen(false)
       const target = document.querySelector(href)
       if (target) {
@@ -75,45 +146,12 @@ const Header = () => {
           </div>
         </div>
 
-        <nav
+        <HeaderNav
           id={navMenuId}
-          className={`site-nav${isMobileMenuOpen ? ' is-open' : ''}`}
-          role="navigation"
-          aria-label="Primary"
-        >
-          <ul>
-            <li>
-              <a href="#hero" onClick={handleNavClick}>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#about" onClick={handleNavClick}>
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#skills" onClick={handleNavClick}>
-                Skills
-              </a>
-            </li>
-            <li>
-              <a href="#projects" onClick={handleNavClick}>
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="/admin" onClick={handleNavClick}>
-                Admin
-              </a>
-            </li>
-            <li>
-              <a href="#contact" onClick={handleNavClick}>
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
+          isOpen={isMobileMenuOpen}
+          activeSectionId={isHomePage ? activeSectionId : undefined}
+          onNavClick={handleNavClick}
+        />
       </div>
     </header>
   )

@@ -4,6 +4,7 @@ import { useScrollReveal } from '../../hooks/useScrollReveal'
 import { projects } from '../../data/projects'
 import type { Project } from '../../data/projects'
 import { fetchProjects } from '../../api/client'
+import './Projects.css'
 
 const getProjectLinkLabel = (link: string) => {
   if (link === '#') {
@@ -31,6 +32,7 @@ const ProjectLinkIcon = ({ link }: { link: string }) =>
 const Projects = () => {
   const projectsRef = useScrollReveal()
   const [data, setData] = useState<Project[]>(projects)
+  const [isLoadingProjects, setIsLoadingProjects] = useState(true)
 
   useEffect(() => {
     fetchProjects()
@@ -39,6 +41,9 @@ const Projects = () => {
       })
       .catch(() => {
         // On failure, keep using fallbackProjects
+      })
+      .finally(() => {
+        setIsLoadingProjects(false)
       })
   }, [])
 
@@ -51,7 +56,21 @@ const Projects = () => {
     >
       <div className="container">
         <div className="projects-heading">
-          <span className="section-kicker">Projects</span>
+          <span className="section-kicker projects-kicker">
+            Projects
+            {isLoadingProjects && (
+              <span
+                className="projects-loading-indicator"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <span className="projects-loading-text">Loading projects</span>
+                <span className="projects-loading-dot" aria-hidden="true" />
+                <span className="projects-loading-dot" aria-hidden="true" />
+                <span className="projects-loading-dot" aria-hidden="true" />
+              </span>
+            )}
+          </span>
           <h2 id="projects-heading">Featured Projects</h2>
           <p>
             Here are some of the projects that showcase my passion for building useful,
